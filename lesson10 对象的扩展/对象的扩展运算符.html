@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+      //解构赋值
+      //对象的解构赋值用于从一个对象取值，相当于将目标对象自身的所有可遍历的（enumerable）、但尚未被读取的属性，分配到指定的对象上面。所有的键和它们的值，都会拷贝到新对象上面
+      let {x,y,...z} = {x:1, y:2, a:3,b:4};
+      console.log(`x:${x}, y:${y}`);  //x:1, y:2
+      console.log(z);  //{a:3, b:4}
+      
+    
+    //let {...a} = null;  //Cannot destructure 'null' as it is null.
+    //let {...b} = undefined; //Cannot destructure 'null' as it is null.
+
+    //let { ...x2, y2, z2 } = ["aaa","bbb"]; // Rest element must be last element
+    // let { x3, ...y3, ...z3 } = ["aaa","bbb"]; // Rest element must be last element
+
+
+    //解构赋值的拷贝是浅拷贝，即如果一个键的值是复合类型的值（数组、对象、函数）、那么解构赋值拷贝的是这个值的引用，而不是这个值的副本
+
+      let obj = {foo:{age:1}};
+      let {...clone} = obj;
+      obj.foo.age = 3;
+      console.log(clone.foo.age);  //3
+      
+      //上面代码中，x是解构赋值所在的对象，拷贝了对象obj的a属性。a属性引用了一个对象，修改这个对象的值，会影响到解构赋值对它的引用
+
+      //另外，扩展运算符的解构赋值，不能复制继承自原型对象的属性
+      let o1 = {name:"zhangsan"};
+      let o2 = {age :"20"};
+      Object.setPrototypeOf(o2,o1);
+
+
+      //对象o3复制了o2，但是只复制了o2自身的属性，没有复制它的原型对象o1的属性
+      let {...o3} = o2;
+
+      console.log(o3); //{age: "20"}
+      console.log(o3.name); //undefined
+
+      const o = Object.create({x5:1,y5:2});
+      o.z5 = 3;
+      let {x5, ...newObj} = o;
+
+      let {y5,z5} = newObj;
+
+      console.log(x5);  //1
+      console.log(y5);  //undefined
+      console.log(z5);  //3
+
+      
+      //解构赋值的一个用处，是扩展某个函数的参数，引入其他操作
+      function baseFunction({a,b}){
+        console.log(a,b);
+      }
+
+      function wrapperFunction({x,y,...restConfig}){
+        console.log(`x:${x}, y:${y}, restConfig:${restConfig}`);
+        return baseFunction(restConfig);
+      }
+      wrapperFunction({x:3,y:4, z:5,a:6});
+
+
+      
+
+
+
+    </script>
+</body>
+
+</html>

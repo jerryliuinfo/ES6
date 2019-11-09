@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        const arr = [
+            'peach',
+            'straw',
+            'apple',
+            'spork'
+        ];
+        const stableSorting= (s1,s2) =>{
+            if(s1[0] < s2[0]){
+                return -1;
+            }
+            return 1;
+        }
+        console.log(arr.sort(stableSorting)); //["apple", "peach", "straw", "spork"]
+
+        const unstableSorting= (s1,s2) =>{
+            if(s1[0] <= s2[0]){
+                return 1;
+            }
+            return -1;
+        }
+        console.log(arr.sort(unstableSorting)); //["spork", "straw", "peach", "apple"]
+
+
+    </script>
+</body>
+
+</html>

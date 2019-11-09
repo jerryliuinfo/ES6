@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        
+        let s = 'hello world!';
+        console.log(s.startsWith('hello'))
+        console.log(s.endsWith('!'))
+        console.log(s.includes('ab'))
+
+         //这三个方法都支持第二个参数，表示开始搜索的位置。
+         console.log(s.startsWith('world',6)) //true
+         console.log(s.endsWith('hello',5)) //true
+         console.log(s.includes('hello',6)) //true
+
+
+         console.log('x'.repeat(3));      //xxx
+         console.log('hello'.repeat(2));  //hellohello
+         console.log('na'.repeat(0));     // ""
+
+        //参数如果是小数，会被取整
+        console.log('na'.repeat(2.9)); //nana
+
+        //如果repeat的参数是负数或者Infinity，会报错
+        //console.log('na'.repeat(Infinity)); //Invalid count value
+        //console.log('na'.repeat(-1)); //Invalid count value
+
+        //如果参数是 0 到-1 之间的小数，则等同于 0，这是因为会先进行取整运算。0 到-1 之间的小数，取整以后等于-0，repeat视同为 0
+        console.log('na'.repeat(-0.9));  // ""
+        console.log('na'.repeat(NaN));  // ""
+
+        //如果repeat的参数是字符串，则会先转换成数字
+        console.log('na'.repeat('na')); // ""
+        console.log('na'.repeat('3'));
+        
+        
+        
+        
+         
+
+       
+    </script>
+</body>
+
+</html>

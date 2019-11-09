@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head> 
+
+<body>
+    <script type="text/javascript">
+      //（4）合并多个对象
+      const merge = (target, ...source) => {
+        Object.assign(target,...source);
+      }
+
+      let result1 = Object.assign({name: "zhangsan"}, {age:20} , {money:100});
+      console.log(result1);
+
+      //(5）为属性指定默认值
+
+      const DEFAULTS = {
+        logLevel:0,
+        outputFormat:'html'
+      }
+
+      //上面代码中，DEFAULTS对象是默认值，options对象是用户提供的参数。Object.assign方法将DEFAULTS和options合并成一个新对象，如果两者有同名属性，则options的属性值会覆盖DEFAULTS的属性值
+      
+      //注意，由于存在浅拷贝的问题，DEFAULTS对象和options对象的所有属性的值，最好都是简单类型，不要指向另一个对象。否则，DEFAULTS对象的该属性很可能不起作用
+      function processContent(options){
+        options = Object.assign({},DEFAULTS,options);
+        console.log(options);
+      }
+      console.log(processContent({name: "wangwu", logLevel:1}));
+      
+      
+    </script>
+</body>
+
+</html>

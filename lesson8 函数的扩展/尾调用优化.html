@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //尾递归  函数调用自身，称为递归。如果尾调用自身，就称为尾递归  递归非常耗费内存，因为需要同时保存成千上百个调用帧，很容易发生“栈溢出”错误（stack overflow）。但对于尾递归来说，由于只存在一个调用帧，所以永远不会发生“栈溢出”错误。
+        //计算n的阶乘，最多需要保存n个调用记录，复杂度 O(n)
+        function factorial(n){
+            if(n === 1){
+                return 1;
+            }
+            return n * factorial(n - 1);
+        }
+        console.log(factorial(5));
+
+        //如果改写成尾递归，只保留一个调用记录，复杂度 O(1) 
+        function factorial2(n,total){
+            if(n === 1){
+                return total;
+            }
+            return factorial2(n - 1, n * total);
+        }
+        console.log(factorial2(5,1));
+
+        //还有一个比较著名的例子，就是计算 Fibonacci 数列，也能充分说明尾递归优化的重要性
+        //指的是这样一个数列：1、1、2、3、5、8、13、21、34、……在数学上，斐波那契数列以如下被以递推的方法定义：F(1)=1，F(2)=1, F(n)=F(n-1)+F(n-2)（n>=3，n∈N*）
+
+        function fibonacci(n){
+            if(n <= 1){
+                return 1;
+            }
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+        let startTime = new Date().getTime();
+        fibonacci(30)
+        console.log('fibonacci2 cost time = '+ (new Date().getTime() - startTime)); //12
+        
+        //fibonacci(50)
+        //console.log('cost time = '+ (new Date().getTime() - startTime)); // 超时
+
+
+        
+        function fibonacci2(n,ac1 = 1,ac2 = 1){
+            if(n <= 1){
+                return ac2;
+            }
+            return fibonacci2(n - 1, ac2, ac1 + ac2);
+        }
+        startTime = new Date().getTime();
+        fibonacci2(30)
+        console.log('fibonacci2 30 cost time = '+ (new Date().getTime() - startTime)); //0
+
+        startTime = new Date().getTime();
+        fibonacci2(100)
+        console.log('fibonacci2 100 cost time = '+ (new Date().getTime() - startTime)); //0
+
+        //递归函数的改写
+        //尾递归的实现，往往需要改写递归函数，确保最后一步只调用自身, 比如上面的例子，阶乘函数 factorial 需要用到一个中间变量total，那就把这个中间变量改写成函数的参数
+        
+        function sum(x,y){
+            if(y > 0){
+                return sum(x+1, y -1);
+            }else{
+                return x;
+            }
+        }
+        //console.log(sum(1,100000)); //Uncaught RangeError: Maximum call stack size exceeded(…)
+        
+        function trampoline(f){ 
+            while(f && f instanceof Function){
+                f = f();
+            }
+            return f;
+        }
+
+        function sum2(x,y){
+            if(y > 0){
+                return sum2.bind(null,x+1,y-1);
+            }else{
+                return x;
+            }
+        }
+        startTime = new Date().getTime();
+        console.log(trampoline(sum2(1,100000))); //100001
+        console.log('sum2 100000 cost time = '+ (new Date().getTime() - startTime)); //8
+
+        //函数参数的尾逗号 此前，函数定义和调用时，都不允许最后一个参数后面出现逗号
+        function clownsEveryWhere(
+            param1,
+            param2,){
+        }
+
+        //Function.prototype.toString()
+        function /* foo comment */ foo(){}
+        console.log(foo.toString);
+
+        //catch 命令的参数省略 JavaScript 语言的try...catch结构，以前明确要求catch命令后面必须跟参数，接受try代码块抛出的错误对象。
+        try{
+        }catch(err){
+            console.log('catch(err)' + err.message);
+        }finally{
+            console.log('finally');
+            
+        }
+        
+
+    </script>
+</body>
+
+</html>

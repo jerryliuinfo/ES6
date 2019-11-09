@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        
+        var {x = 3} = {}
+        console.log(x);
+
+        var {x, y =5} = {x:1}
+        console.log(x,y);
+        
+        
+        var {x1:y1 = 3} = {}
+        console.log(y1); //3  这里y1 为变量名
+
+        var {x2:y2 = 4} = {x2:5}
+        console.log(y2); //5 这里y2 为变量名 
+        
+        var {x3:y3 = 4} = {x1:5}
+        console.log(y3); //4 这里y3 为变量名 
+
+        var {x4 = 3} = {x4:undefined};
+        console.log(x4);
+
+        var {x5 = 3} = {x5:undefined};
+        console.log(x5);
+
+      
+        
+    </script>
+</body>
+
+</html>

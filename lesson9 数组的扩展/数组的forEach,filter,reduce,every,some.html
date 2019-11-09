@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        
+        console.log(Array(3));
+        
+        //forEach  forEach() 方法用于调用数组的每个元素，并将元素传递给回调函数
+        let array = [1,10,5,5,4];
+        array.forEach(item => console.log(item));
+         
+         //filter  不会改变原始数组。
+         let filterArray = array.filter(item =>  item >2);
+         console.log('array = '+array);  //1,10,5
+         console.log(', filterArray = '+filterArray); //10,5
+
+         //reduce reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值
+         let total = array.reduce((pre,currentValue,index) => {
+             console.log('total = '+pre +', currentValue = '+currentValue +', index = '+index);
+             return pre + currentValue;
+         });
+         console.log('total = '+total);
+
+
+         let max = array.reduce((pre,currentValue,index) => {
+             return Math.max(pre,currentValue);
+         });
+         console.log('max = '+max);
+         
+         //数组去重
+         let arr = [1,2,3,4,4,1]
+        let newArr = arr.reduce((pre,cur)=>{
+            //if(!pre.includes(cur)){
+            if(pre.indexOf(cur) === -1){
+                return pre.concat(cur)
+            }else{
+                return pre
+            }
+        },[])
+        console.log(newArr);// [1, 2, 3, 4]
+         
+         //every 方法用于检测数组所有元素是否都符合指定条件（通过函数提供） 如果数组中检测到有一个元素不满足，则整个表达式返回 false ，且剩余的元素不会再进行检测
+         //如果所有元素都满足条件，则返回 true  every() 不会改变原始数组
+         let result = arr.every(item => {
+             return item > 2;
+         });
+         console.log(result); //false 
+         console.log(arr.every(item => {return item > 0;})); //true
+
+         /* 
+         some 检测数组元素中是否有元素符合指定条件,some() 方法会依次执行数组的每个元素,
+         如果有一个元素满足条件，则表达式返回true , 剩余的元素不会再执行检测,
+         如果没有满足条件的元素，则返回false,
+         some() 不会改变原始数组
+          */
+
+          let someResult = arr.some(item => {
+             return item > 5;
+         });
+         console.log('someResult = '+someResult); //true 
+
+         //every和some的区别是
+         /* 
+            1.every 遍历所有元素，如果有一个不满足条件，则返回false，不再遍历后面的元素，如果所有元素都满足条件，则返回true
+            2.some 遍历所有元素，如果有一个满足条件，则返回true，不再遍历后面的元素，如果所有元素都不满足条件，则返回false
+          */
+
+
+          let a = undefined;
+          if(a){
+            console.log("not none");
+          }else{
+            console.log("undefined");
+
+          }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        {
+            let a = 10;
+            var b = 1;
+        }
+        
+        console.log(b); 
+       // console.log(a); //Uncaught ReferenceError: a is not defined
+        for(let i = 0; i < 10;i++){
+            let i = "abc";
+            console.log(i);
+        }
+        
+           //不存在变量提升
+        //console.log(foo);
+        var foo = 2;
+
+        //console.log(bar);
+        let bar = 2; //let命令.html:26 Uncaught ReferenceError: Cannot access 'bar' before initialization
+        
+        //暂时性死区
+        var temp = 123;
+        if(true){
+            //temp = "abc";
+            //console.log(temp); //Uncaught ReferenceError: Cannot access 'temp' before initialization 
+            let temp ;
+            console.log(temp); //undefined
+            console.log(typeof age); //undefined
+        }
+    </script>
+</body>
+
+</html>

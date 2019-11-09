@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //如果在模板字符串中需要使用反引号，则前面要用反斜杠转义。
+        let greeting = `\`Yo\` World!`;
+        console.log(greeting);
+
+        //如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中,如果你不想要这个换行，可以使用trim方法消除它
+
+        let x = 1;
+        let y = 2;
+
+        console.log( `${x} + ${y} = ${x + y}`);
+
+        let obj = {x:1, y:2};
+        console.log( `${obj.x} + ${obj.y}`);
+        
+
+        //模板字符串之中还能调用函数
+        function fn (){
+            return "hello world";
+        }
+        console.log(`foo ${fn()} bar`);
+
+        alert`123`
+        
+       
+       
+    </script>
+</body>
+
+</html>

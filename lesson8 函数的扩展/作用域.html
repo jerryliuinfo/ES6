@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+  //一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域（context）。等到初始化结束，这个作用域就会消失。这种语法行为，在不设置参数默认值时，是不会出现的。
+    var x = 1;
+    //调用函数f时，参数形成一个单独的作用域。在这个作用域里面，默认值变量x指向第一个参数x，而不是全局变量x，所以输出是2
+    function f(x, y = x) {
+        console.log(y);
+    }
+
+    f(2) // 2
+
+    let foo = 'outer';
+    function bar (func = () => foo){
+        let foo = 'inner';
+        console.log(func());
+    }
+    bar(); //outer
+    
+    //利用参数默认值，可以指定某一个参数不得省略，如果省略就抛出一个错误
+    function throwIfMissing() {
+        throw new Error('Missing parameter');
+    }
+
+    function foo2(mustBeProvided = throwIfMissing()) {
+        return mustBeProvided;
+    }
+
+    
+   console.log( foo2('a')); //a
+   //foo2(); //作用域.html:29 Uncaught Error: Missing parameter
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        const foo = "bar";
+        const baz = {foo};
+        console.log(baz); //{foo: "bar"}
+
+        console.log({foo:foo}); //{foo: "bar"}
+        
+        //上面代码中，变量foo直接写在大括号里面。这时，属性名就是变量名, 属性值就是变量值。下面是另一个例子
+
+        function f(x,y){
+            return {x,y}
+        }
+
+        //等同于
+        function f2(x,y){
+            return {x:x, y:y};
+        }
+        console.log(f2(1,2)); //{x: 1, y: 2}
+
+        //除了属性简写，方法也可以简写
+        const o = {
+            method(){
+                return "Hello";
+            }
+        }
+        const o2 = {
+            method: function(){
+                return "Hello2";
+            }
+        }
+        console.log(o);
+        console.log(o2);
+
+        let birth = "2019/11/04";
+        const person = {
+            name:"张三",
+            birth,
+            test(){
+                return `我的名字是${this.name}`;
+            }
+        }
+        console.log(person); //{name: "张三", birth: "2019/11/04", test: ƒ}
+
+        function getPoint(){
+            const x = 1;
+            const y = 10;
+            return {x,y};
+        }
+        console.log(getPoint()); //{x: 1, y: 10}
+
+        function testFinnaly(num){
+            try {
+            if(num >1){
+                console.log('num = '+num);
+                
+                return;
+            }
+            } catch (error) {
+                
+            }finally{
+                console.log('finally');
+            }
+        }
+        testFinnaly(5);
+
+        let num = 500;
+        let currency = "CNY";
+        console.log(500+currency);
+        
+
+        
+        
+        
+        
+
+
+
+        
+        
+        
+    </script>
+</body>
+
+</html>

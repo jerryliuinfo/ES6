@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head> 
+
+<body>
+    <script type="text/javascript">
+      
+      let obj = {foo: 'bar', baz :42};
+      //["baz", 42]
+      console.log("Object.keys = " +Object.keys(obj)); // ["foo", "baz"]
+      
+      //Object.values()
+      console.log("Object.values = " +Object.values(obj)); // ["bar", "42"]
+      
+      //Object.entries()
+      let entries = Object.entries(obj);
+      for (const [key,value] of entries) {
+        console.log([key,value]); //["foo", "bar"]  ["baz", 42]
+      }
+
+      //Object.fromEntries()   Object.fromEntries()方法是Object.entries()的逆操作，用于将一个键值对数组转为对象。
+      let array = [ ['foo','bar'], ['baz',42] ];
+      console.log(Object.fromEntries(array));  //{foo: "bar", baz: 42}
+      
+      //该方法的主要目的，是将键值对的数据结构还原为对象，因此特别适合将 Map 结构转为对象
+
+      const map1 = new Map().set('foo',true).set('baz', false);
+      console.log(Object.fromEntries(map1));  //{foo: true, baz: false}
+
+
+
+
+    </script>
+</body>
+
+</html>

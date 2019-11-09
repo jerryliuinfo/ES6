@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+       
+        function logInfo(x,y){
+            y = y || 'world';
+            console.log(x,y);
+            
+        }
+        logInfo('hello')    //hello world
+        logInfo('hello','china'); //hello china
+        logInfo('hello', ' '); //hello china
+        
+
+
+        function logInfo2(x,y = 'python'){
+            console.log(x,y);
+            
+        }
+        logInfo2('hello')    //hello python
+        logInfo2('hello','china'); //hello china
+        logInfo2('hello', ''); //hello python
+
+        //参数变量是默认声明的，所以不能用let或const再次声明
+        function foo(x = 5){
+            //let x = 1;  //error
+            //const x = 2; //error
+        }
+
+        //不报错
+        function foo2(x,x,y){
+
+        }
+        //报错 Uncaught SyntaxError: Duplicate parameter name not allowed in this context
+       /*  function foo3(x,x,y = 1){
+
+        } */
+
+        let x = 99;
+        function bar(p = x +1){
+            console.log(p);
+        }
+        bar(); //100
+
+        x = 200;
+        bar(); //201
+
+        
+    </script>
+</body>
+
+</html>

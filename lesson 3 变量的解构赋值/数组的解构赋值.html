@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构
+        //只要某种数据结构具有 Iterator 接口，都可以采用数组形式的解构赋值。
+
+        //ES5 
+        let a = 1;
+        let b = 2;
+        let c = 3;
+
+        let [d,e,f] = [1,2,3];
+        console.log(d,e,f); //1,2,3
+
+        let [foo, [[bar], baz]] = [1,[[2],3]];
+        console.log(foo,bar,baz); // 1,2,3
+
+        let [, , third ,]= ["foo","bar", "hello","baz"];
+        console.log(third); //bar
+        
+        let [head, ...tail] = [1,2,3,4];
+        console.log(head); //1
+        console.log(tail); // [2,3,4]
+
+        let[x,y,...z] = ["a"];
+        console.log(x,y,z); //a, undefined, []
+
+        //另一种情况是不完全解构，即等号左边的模式，只匹配一部分的等号右边的数组。这种情况下，解构依然可以成功
+        let [aaa,bbb] = [1,2,3];
+        console.log(aaa,bbb); // 1,2
+
+        //如果等号的右边不是数组（或者严格地说，不是可遍历的结构，参见《Iterator》一章），那么将会报错。
+        //let [foo2] = 1; //Uncaught TypeError: 1 is not iterable
+
+
+        let [x1,y1,z1] = new Set(["a","b","c"]);
+        console.log(x1, y1,z1); //a,b,c
+        
+        
+        
+
+    </script>
+</body>
+
+</html>

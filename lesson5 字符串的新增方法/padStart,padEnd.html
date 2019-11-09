@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        let x = 'x';
+        //上面代码中，padStart()和padEnd()一共接受两个参数，第一个参数是字符串补全生效的最大长度，第二个参数是用来补全的字符串。
+        console.log(x.padStart(5, 'ab')); // ababx
+        console.log(x.padStart(4, 'ab')); //abax
+
+        
+        console.log(x.padEnd(5, 'ab')); // xabab
+        console.log(x.padEnd(4, 'ab')); //xaba
+
+
+        //如果原字符串的长度，等于或大于最大长度，则字符串补全不生效，返回原字符串
+        console.log('xxx'.padStart(2, 'ab')); // xxx
+        console.log('xxx'.padEnd(2, 'ab')); //xxx  
+
+        //如果省略第二个参数，默认使用空格补全长度。
+        console.log('x'.padStart(4)); //'   x'
+        console.log('x'.padStart(4).length); //4
+
+        console.log('x'.padEnd(4)); //'x    '
+        
+        //padStart()的常见用途是为数值补全指定位数。下面代码生成 10 位的数值字符串。
+
+        console.log('1'.padStart(8, '0')); // '00000001'
+        console.log('12'.padStart(8, '0')); // '00000012'
+        console.log('123456'.padStart(8, '0')); // '00123456'
+        
+
+
+    </script>
+</body>
+
+</html>

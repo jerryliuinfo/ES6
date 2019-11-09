@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        let {foo,bar} = {foo:"aaa", bar: "bbb"}
+        console.log(foo, bar); //aaa, bbb
+
+        let {aaa,bbb} = {bbb : "123", aaa:"456"}
+        console.log(aaa,bbb);
+
+        let {baz} = {foo:"foo", bar: "bar"}
+        console.log(baz); // undefined
+        
+        //对象的解构赋值，可以很方便地将现有对象的方法，赋值到某个变量
+        let {log,sin,cos} = Math;
+        
+        // 例二
+        // const { log } = console;
+        // log('hello') // hello
+        
+        //如果变量名与属性名不一致，必须写成下面这样。
+        let {ccc: dog, bar: cat} = {ccc : "hello", bar2: "bar"}
+        console.log(dog,cat); // dog, undefined
+
+        //这实际上说明，对象的解构赋值是下面形式的简写（参见《对象的扩展》一章）。 也就是说，对象的解构赋值的内部机制，
+        //是先找到同名属性，然后再赋给对应的变量。真正被赋值的是后者，而不是前者。
+        //let { foo: foo, bar: bar } = { foo: 'aaa', bar: 'bbb' };
+        
+        
+
+    </script>
+</body>
+
+</html>

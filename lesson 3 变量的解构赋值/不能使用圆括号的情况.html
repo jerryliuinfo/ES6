@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+      //上面 6 个语句都会报错，因为它们都是变量声明语句，模式不能使用圆括号。
+        // let [(a)] = [1];
+        // let {x: (c)} = {};
+        // let ({x: c}) = {};
+        // let {(x: c)} = {};
+        // let {(x): c} = {};
+
+        // let { o: ({ p: p }) } = { o: { p: 2 } };
+
+        //函数参数也属于变量声明，因此不能带有圆括号
+       // 报错
+        //function f([(z)]) { return z; }
+        // 报错
+        //function f([z,(x)]) { return x; }
+
+        //可以使用圆括号的情况  可以使用圆括号的情况只有一种：赋值语句的非模式部分，可以使用圆括号。
+        [(b)] = [3];
+       
+
+        ({p:(d)} = {});
+        [(parseInt.prop)] = [5];
+        console.log(b,d,parseInt.prop);
+        
+        
+    </script>
+</body>
+
+</html>

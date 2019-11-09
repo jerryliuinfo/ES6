@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        function foo({x, y = 5}){   
+            console.log(x,y);
+            
+        }
+
+        foo({});   //undefined 5
+        foo({x:1}) //1 5
+        foo({x:1,y:2}) //1,2
+        foo({x:1, z:3}) //1,5
+        //foo(); // TypeError: Cannot read property 'x' of undefined 
+    </script>
+</body>
+
+</html>

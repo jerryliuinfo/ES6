@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        console.log("ES5----------->");
+       //ES5 
+       function log(x,y){
+            y = y || "world";
+            console.log(x,y);
+       }
+       log("hello") // hello world
+       log("hello", "china"); // hello china
+       log("hello", ""); // hello world
+       log("hello", undefined); // hello  world
+       log("hello", null); // hello  world
+       log("hello", false); // hello  world 赋值不会起作用，因为y需要的是字符串类型，但是传递的是boolean值，所以会用默认值
+
+       console.log("ES6-----------> \n");
+       function log2(x, y = "world"){
+         console.log(x,y);
+       }
+       log2("hello") // hello world
+       log2("hello", "china"); // hello china
+       log2("hello", ""); // hello world
+       log2("hello", undefined); // hello  world
+       log2("hello", null); // hello  world
+       log2("hello", false); // hello  world 赋值会起作用，不会用默认值
+
+       function Point(x = 0, y = 0){
+        this.x = x;
+        this.y = y;
+
+       }
+       const p = new Point();
+       console.log(p);
+
+       let x = 99;
+       function foo(p = x +1){
+        console.log(p);
+       }
+       foo();
+
+       x = 50;
+       foo();
+
+    </script>
+</body>
+
+</html>

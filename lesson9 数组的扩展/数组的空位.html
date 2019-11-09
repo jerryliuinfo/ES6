@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        
+        console.log(Array(3)); //[, , ,]
+
+        
+        /* 
+        Array.from方法会将数组的空位，转为undefined，也就是说，这个方法不会忽略空位
+         */
+         console.log(Array.from(['a',,'b']));//["a", undefined, "b"]
+         //扩展运算符（...）也会将空位转为undefined
+         console.log([...['a',,'b']]);
+         
+         //fill()会将空位视为正常的数组位置
+         console.log(new Array(3).fill('a')); //["a","a","a"]
+
+         //for...of循环也会遍历空位
+         let arr = [,,];
+         for (const i of arr) {
+             console.log(1);  //1 1
+         }
+         //map方法遍历，空位是会跳过的。
+         arr.map((item => {
+             console.log(item);
+         }));
+         
+
+         //entries()、keys()、values()、find()和findIndex()会将空位处理成undefined
+         let array2 = [...[,'a']];
+         
+         for (const entry of array2.entries()) {
+             console.log(entry); // [0, undefined],[1, "a"]
+         }
+
+         for (const key of array2.keys()) {
+             console.log(key); // [0,1]
+         }
+
+         for (const value of array2.values()) {
+             console.log(value); // [undefined,"a"]
+         }
+         console.log([,'a'].find(x =>true)); // undefined
+         console.log([,'a'].findIndex(x =>true)); // 0
+         
+    </script>
+</body>
+
+</html>

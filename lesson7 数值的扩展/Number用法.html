@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //Number.isFinite()用来检查一个数值是否为有限的（finite），即不是Infinity 
+        //如果参数类型不是数值，Number.isFinite一律返回false
+        console.log(Number.isFinite(15)); // true
+        console.log(Number.isFinite(0.8)); // true
+        console.log(Number.isFinite(NaN)); // false
+        console.log(Number.isFinite(Infinity)); // false
+        console.log(Number.isFinite('foo')); // false
+        console.log(Number.isFinite('15')); // false
+        console.log(Number.isFinite(true)); // false
+
+        //JavaScript 内部，整数和浮点数采用的是同样的储存方法，所以 25 和 25.0 被视为同一个值
+        console.log(Number.parseInt('12.34'));  //12
+        console.log(Number.parseFloat('12.345#')); //12.345
+
+        //Number.isInteger()用来判断一个数值是否为整数。
+        console.log(Number.isInteger(25));
+        console.log(Number.isInteger(25.0));
+        console.log(Number.isInteger(25.1));
+
+        //如果参数不是数值，Number.isInteger返回false
+        console.log(Number.isInteger());
+        console.log(Number.isInteger(null));
+        console.log(Number.isInteger('15'));
+        console.log(Number.isInteger(true));
+        
+
+        //如果参数不是数值，Number.isInteger返回false Number.EPSILON实际上是 JavaScript 能够表示的最小精度。误差如果小于这个值，就可以认为已经没有意义了，即不存在误差了。
+        //引入一个这么小的量的目的，在于为浮点数计算，设置一个误差范围
+        console.log(Number.EPSILON);
+
+
+        console.log(0.1+0.2); // 0.30000000000000004
+        console.log((0.1+0.2) === 0.3); // false
+        
+        
+        function withinErrorMargin (left, right) {
+            return Math.abs(left - right) < Number.EPSILON * Math.pow(2, 2);
+        }
+        console.log(withinErrorMargin((0.1+0.2),0.3)); // true
+
+        //安全整数和 Number.isSafeInteger()
+        console.log(Math.pow(2,53)); //9007199254740992
+        console.log(Math.pow(2,53) + 1); //9007199254740992
+        console.log(Math.pow(2,53) === (Math.pow(2,53) + 1));
+        
+        
+        
+        
+    </script>
+</body>
+
+</html>

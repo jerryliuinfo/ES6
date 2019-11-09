@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        console.log([1, 2, 3].includes(2) ); //true
+        console.log([1, 2, 3].includes(4) ); //false
+        console.log([1, 2, NaN].includes(NaN) ); //true
+
+        //没有该方法之前，我们通常使用数组的indexOf方法，检查是否包含某个值
+        console.log([1, 2, 3].indexOf(2) ); // -1
+
+    </script>
+</body>
+
+</html>

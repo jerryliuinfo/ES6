@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+      //S5 比较两个值是否相等，只有两个运算符：相等运算符（==）和严格相等运算符（===）。它们都有缺点，前者会自动转换数据类型，后者的NaN不等于自身，以及+0等于-0。
+      
+
+      let number1 = 123;
+      let number2 = "123";
+      console.log(number1 == number2);  // true
+      console.log(number1 === number2); // false
+      console.log(Object.is(number1,number2)); // false
+
+
+
+      
+
+
+
+    </script>
+</body>
+
+</html>

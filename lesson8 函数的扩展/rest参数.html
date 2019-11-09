@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        //ES6 引入 rest 参数（形式为...变量名），用于获取函数的多余参数，这样就不需要使用arguments对象了。rest 参数搭配的变量是一个数组，该变量将多余的参数放入数组中
+        function add(...values){
+            let sum = 0;
+            for (const val of values) {
+                sum += val;
+            }
+            return sum;
+        }
+        console.log(add(2,3,5));
+
+       const sortNumbers = (...numbers) =>numbers.sort();
+       console.log(sortNumbers(2,6,10,5));
+       
+       function push(array, ...items){
+            items.forEach(item => {
+                array.push(item);
+                console.log(item);
+            }); 
+       }
+       var a = [5,6];
+       push(a,1,2,3,4);
+       console.log(a);
+
+
+       var b = [...a, 1,2,3,4];
+       console.log(b);
+       b[0] = 16;
+       console.log("b[0] = "+b[0] +", a[0] = "+ a[0]);
+       
+
+
+
+       //报错 Uncaught SyntaxError: Rest parameter must be last formal parameter
+     /*   function foo(a, ...b,c){
+
+       } */
+
+       //函数的length属性，不包括 rest 参数
+        console.log((function (a) {}).length); //1
+        console.log((function (...a) {}).length); //0
+        console.log((function (a,...b) {}).length); //1
+        
+
+       //name属性
+       function foo(){
+
+       }
+       console.log(foo.name);  //foo
+       
+
+    </script>
+</body>
+
+</html>

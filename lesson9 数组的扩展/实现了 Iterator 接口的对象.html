@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //任何定义了遍历器（Iterator）接口的对象（参阅 Iterator 一章），都可以用扩展运算符转为真正的数组。
+        let arrayLike = {'0':'a', '1':'b'};
+        //实现了 Iterator 接口的对象.html:12 Uncaught TypeError: object is not iterable (cannot read property Symbol(Symbol.iterator))
+        let arr = [...arrayLike];
+        console.log(arr)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+      //ES6 允许字面量定义对象时，用方法二（表达式）作为对象的属性名，即把表达式放在方括号内。
+      let ageKey = "age";
+      var obj = {
+        foo:true,
+        [ageKey]:10,
+        [`a` +`bc`]:"zhangsan",
+      };
+      console.log(obj); //{foo: true, age: 10, abc: "zhangsan"}
+      obj.name = "zhangsan";
+      console.log(obj); //{foo: true, ageKey: 10, name: "zhangsan"}
+      
+
+      let lastWorld = `last world`;
+      const a = {
+          'first world':'hello',
+          [lastWorld]:'world'
+      }
+      console.log(a[`first world`]); //hello
+      console.log(a[`last world`]);  //world
+      console.log(a[lastWorld]);     //world
+      
+      //属性名表达式如果是一个对象，默认情况下会自动将对象转为字符串[object Object]，这一点要特别小心
+
+      const keyA = { a: 1};
+      const keyB = { b: 2 };
+      const myObject = {
+          [keyA]:'valueA',
+          [keyB]:'valueB'
+      }
+      console.log(myObject); //{[object Object]: "valueB"}
+      
+
+        
+        
+        
+    </script>
+</body>
+
+</html>

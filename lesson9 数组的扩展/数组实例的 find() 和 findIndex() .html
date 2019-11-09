@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        
+        /* 数组实例的find方法，用于找出第一个符合条件的数组成员。
+        它的参数是一个回调函数，所有数组成员依次执行该回调函数，
+        直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，
+        则返回undefined */
+
+        let array = [1,4,-5,10];
+        let item = array.find( (item,index,array) => {
+            console.log(`item = `+item +', index = '+ index +', array = '+array);
+            return item < 0;
+        });
+        console.log(item);
+
+        //数组实例的findIndex方法的用法与find方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1
+        let index = array.findIndex( (item,index,array) => {
+            return item > 9;
+        });
+        console.log(index);
+
+        //fill方法使用给定值，填充一个数组。
+        console.log(['a','b','c','d'].fill(7)); //[7,7,7,7]
+        console.log(['a','b','c','d'].fill(7,1,2)); //['a',7,c,d]
+        console.log(['a','b','c','d'].fill(7,1,3)); //['a',7,7,d]
+
+        //注意，如果填充的类型为对象，那么被赋值的是同一个内存地址的对象，而不是深拷贝对象
+        let arr = new Array(3).fill({name:'Alyson'});
+        console.log(arr);
+        arr[0].name = 'jerry';
+        console.log(arr);
+        
+       
+        
+
+        
+    </script>
+</body>
+
+</html>

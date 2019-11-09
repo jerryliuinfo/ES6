@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //扩展运算符可以与解构赋值结合起来，用于生成数组
+        let array1 = [1,2,3,4,5];
+        const [first,...rest] = array1;
+        console.log(first); //1
+        console.log(rest); //[2,3,4,5]
+        first = 10; 
+        console.log(array1);
+        
+
+
+        const [first2,...rest2] = [];
+        console.log(first2); //undefined
+        console.log(rest2); //[]
+
+        const [first3,...rest3] = ['foo'];
+        console.log(first3); //"foo"
+        console.log(rest3); //[]
+
+        //如果将扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错
+        //Uncaught SyntaxError: Rest element must be last element
+        //const [first4,...reset4, last] = [1,2,3,4,5]
+
+        //字符串 扩展运算符还可以将字符串转为真正的数组
+        const hello = 'Hello';
+        console.log([...hello]); // ['h','e','l','l','o']
+        
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var tmp = new Date();
+        function f() {
+            console.log(tmp);
+            if (false) {
+                var tmp = 'hello world';
+            }
+        }
+
+        f(); // undefined
+
+        var s = "hello";
+        for (var i = 0; i < s.length; i++) {
+        }
+        console.log(i); //5 
+
+
+        // 块级作用域内部的函数声明语句，建议不要使用
+        {
+            let a = 'secret';
+            function f() {
+                return a;
+            }
+        }
+
+        // 块级作用域内部，优先使用函数表达式
+        {
+            let a = 'secret';
+            let f = function () {
+                return a;
+            };
+        }
+
+        if(true) {
+            let x = 1;   
+        }
+
+    </script>
+</body>
+
+</html>

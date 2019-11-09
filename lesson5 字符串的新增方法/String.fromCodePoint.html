@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        
+       console.log(String.fromCharCode(0x20BB7));
+
+       console.log(String.raw`Hi\\n${2+3}!`); //Hi\n5! `前不要加括号
+       
+       console.log(String.raw({ raw: 'test' }, 0, 1, 2)); // 't0e1s2t'
+
+       //作为函数，String.raw()的代码实现基本如下。
+
+       String.raw = function (strings, ...values) {
+            let output = '';
+            let index;
+            for (index = 0; index < values.length; index++) {
+                output += strings.raw[index] + values[index];
+            }
+            output += strings.raw[index]
+            return output;
+        }
+
+        var s = "𠮷";
+        console.log(s.length);// 2
+        console.log(s.charAt(0));// �
+        console.log(s.charAt(1));// �
+        console.log(s.charCodeAt(0));// 55362
+        console.log(s.charCodeAt(1));// 57271
+        
+
+         
+
+       
+    </script>
+</body>
+
+</html>

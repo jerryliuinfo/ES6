@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head> 
+
+<body>
+    <script type="text/javascript">
+
+    //(1) 浅拷贝
+      //Object.assign方法实行的是浅拷贝，而不是深拷贝。也就是说，如果源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用。
+      const obj1 = {a:{b:1}}
+      const obj2 = Object.assign({},obj1);
+      console.log(obj2.a.b);  //1
+
+      obj1.a.b = 3;
+      console.log(obj2.a.b); //3
+
+      //上面代码中，源对象obj1的a属性的值是一个对象，Object.assign拷贝得到的是这个对象的引用。这个对象的任何变化，都会反映到目标对象上面
+
+      //(2) 同名属性的替换
+      const target = {a: {b:"c", d:"d"}};
+      const source = {a:{b:'hello'}};
+      console.log(Object.assign(target,source)); //{ a: { b: 'hello' } }
+      
+
+      //(3）数组的处理
+      let targetArray = [1,2,3];
+      let sourceArray = [4,5];
+      console.log(Object.assign(targetArray,sourceArray)); // [4,5,3]
+      
+      //上面代码中，Object.assign把数组视为属性名为 0、1、2 的对象，因此源数组的 0 号属性4覆盖了目标数组的 0 号属性1。
+      
+      //（4）取值函数的处理  Object.assign只能进行值的复制，如果要复制的值是一个取值函数，那么将求值后再复制
+
+      const fooValue = {
+        get foo(){
+          return 'hello';
+        }
+      }
+      console.log(Object.assign({},fooValue)); //{f00:"hello"}
+      
+    </script>
+</body>
+
+</html>

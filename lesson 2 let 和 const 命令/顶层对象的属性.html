@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文档的标题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+       window.a =1;
+       console.log(a);
+
+       a = 2;
+       console.log(a);
+
+        //下面代码中，全局变量a由var命令声明，所以它是顶层对象的属性；全局变量b由let命令声明，所以它不是顶层对象的属性，返回undefined。
+       var b = 3;
+       console.log(window.b); //3
+
+       let c = 4;
+       console.log(window.c); //
+        
+    </script>
+</body>
+
+</html>
